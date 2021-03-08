@@ -14,9 +14,7 @@ const App = () => {
   const { data, error } = useFetchCurrencies();
 
   if (error) return <PageErrorFallback error={error} />;
-  if (!data) {
-    return <PageLoader />;
-  }
+  if (!data) return <PageLoader />;
 
   return (
     <PageContainer

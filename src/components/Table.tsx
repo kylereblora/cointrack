@@ -4,6 +4,10 @@ import * as React from "react";
 import { useTable } from "react-table";
 import { CoinLogo, CurrencyText, P, PercentageText, Table } from "./lib";
 
+interface CellValueProp {
+  value: string;
+}
+
 function CryptoTable({ data }: any) {
   const columns = React.useMemo(
     () => [
@@ -13,7 +17,7 @@ function CryptoTable({ data }: any) {
       },
       {
         accessor: "logo_url",
-        Cell: ({ value: logo_url }: { value: string }) => (
+        Cell: ({ value: logo_url }: CellValueProp) => (
           <div
             css={{
               maxWidth: "26px",
@@ -31,7 +35,7 @@ function CryptoTable({ data }: any) {
       {
         Header: "Name",
         accessor: "currency",
-        Cell: ({ value: currency }: { value: string }) => (
+        Cell: ({ value: currency }: CellValueProp) => (
           <div
             css={{
               display: "flex",
@@ -45,13 +49,13 @@ function CryptoTable({ data }: any) {
       {
         Header: () => <P>Price</P>,
         accessor: "price",
-        Cell: ({ value }: { value: string }) => <CurrencyText value={value} />,
+        Cell: ({ value }: CellValueProp) => <CurrencyText value={value} />,
       },
       {
         Header: () => <P>24H %</P>,
         accessor: (row: any) => row["1d"].price_change_pct,
         id: "24h%",
-        Cell: ({ value }: { value: string }) => (
+        Cell: ({ value }: CellValueProp) => (
           <PercentageText value={value} />
         ),
       },
