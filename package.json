@@ -35,10 +35,13 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
     "axios": "^0.21.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-hot-loader": "^4.13.0",
+    "react-icons": "^4.2.0",
     "react-scripts": "^4.0.3",
     "react-table": "^7.6.3",
     "swr": "^0.4.2"

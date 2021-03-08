@@ -1,27 +1,49 @@
+/** @jsx jsx */
+import { css, jsx } from "@emotion/react";
 import * as React from "react";
-import "./App.scss";
 import { useFetchCurrencies } from "./hooks/useFetchCurrencies";
-import Table from './components/Table';
+import CryptoTable from "./components/Table";
+import { PageContainer, PageErrorFallback, PageLoader } from "./components/lib";
+import {
+  backgroundColor,
+  bodyColor,
+  scrollbarThumbColor,
+} from "./styles/colors";
 
 const App = () => {
   const { data, error } = useFetchCurrencies();
 
-  React.useEffect(() => {
-    console.log(data);
-  }, [data]);
-
-  if (error) return <div>failed to load</div>;
+  if (error) return <PageErrorFallback error={error} />;
   if (!data) {
-    return <div>Loading...</div>;
+    return <PageLoader />;
   }
 
   return (
-    <div className="App">
+    <PageContainer
+      css={css`
+        color: ${bodyColor};
+        overflow-y: scroll;
+        overflow-x: hidden;
+        &::-webkit-scrollbar {
+          width: 0.2em;
+          height: 0.2em;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: ${scrollbarThumbColor};
+        }
+        &::-webkit-scrollbar-track {
+          background: ${backgroundColor};
+        }
+        & {
+          scrollbar-face-color: ${scrollbarThumbColor};
+          scrollbar-track-color: ${backgroundColor};
+        }
+      `}
+    >
       <h1>CoinTrack</h1>
-      <Table data={data} />
-    </div>
+      <CryptoTable data={data} />
+    </PageContainer>
   );
 };
-
 
 export default App;

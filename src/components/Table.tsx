@@ -1,8 +1,10 @@
+/** @jsx jsx */
+import { css, jsx } from "@emotion/react";
 import * as React from "react";
 import { useTable } from "react-table";
-import { formatPercentage, formatCurrency } from "../utils/numberFormat";
+import { CoinLogo, CurrencyText, P, PercentageText, Table } from "./lib";
 
-function Table({ data }: any) {
+function CryptoTable({ data }: any) {
   const columns = React.useMemo(
     () => [
       {
@@ -10,37 +12,47 @@ function Table({ data }: any) {
         accessor: "rank",
       },
       {
-        Header: "Name",
-        accessor: (row: any) => (
-          <div style={{ display: "flex" }}>
-            <img
-              style={{
-                maxWidth: "30px",
-                maxHeight: "20px",
-                width: "auto",
-                height: "auto",
-              }}
-              src={row.logo_url}
-              alt={row.currency}
-            />
-            <span>
-              <p>{row.name}</p> <p>{row.currency}</p>
-            </span>
+        accessor: "logo_url",
+        Cell: ({ value: logo_url }: { value: string }) => (
+          <div
+            css={{
+              maxWidth: "26px",
+              maxHeight: "26px",
+              height: "26px",
+              width: "26px",
+              textAlign: "center",
+              margin: "6px",
+            }}
+          >
+            <CoinLogo src={logo_url} alt={logo_url} />
           </div>
         ),
       },
       {
-        Header: () => <p style={{ textAlign: "right" }}>Price</p>,
-        accessor: "price",
-        Cell: ({ value }: { value: string }) => (
-          <p style={{ textAlign: "right" }}>{formatCurrency(value)}</p>
+        Header: "Name",
+        accessor: "currency",
+        Cell: ({ value: currency }: { value: string }) => (
+          <div
+            css={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <p css={{ fontWeight: "bold" }}>{currency}</p>
+          </div>
         ),
       },
       {
-        Header: "24h %",
+        Header: () => <P>Price</P>,
+        accessor: "price",
+        Cell: ({ value }: { value: string }) => <CurrencyText value={value} />,
+      },
+      {
+        Header: () => <P>24H %</P>,
         accessor: (row: any) => row["1d"].price_change_pct,
+        id: "24h%",
         Cell: ({ value }: { value: string }) => (
-          <p style={{ textAlign: "right" }}>{formatPercentage(value)}%</p>
+          <PercentageText value={value} />
         ),
       },
     ],
@@ -59,12 +71,8 @@ function Table({ data }: any) {
   });
 
   return (
-    <table {...getTableProps()}>
-      <thead
-        style={{
-          textAlign: "left",
-        }}
-      >
+    <Table {...getTableProps()}>
+      <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
@@ -85,8 +93,8 @@ function Table({ data }: any) {
           );
         })}
       </tbody>
-    </table>
+    </Table>
   );
 }
 
-export default Table;
+export default CryptoTable;

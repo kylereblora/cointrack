@@ -2,11 +2,11 @@ const webpack = require("webpack");
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 const Dotenv = require('dotenv-webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   entry: {
     popup: path.join(__dirname, "src/popup.tsx"),
+    content: path.join(__dirname, "src/content.ts"),
     background: path.join(__dirname, "src/background.ts"),
   },
   output: { path: path.join(__dirname, "dist"), filename: "[name].js" },
