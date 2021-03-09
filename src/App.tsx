@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
 import * as React from "react";
+import Switch from "react-switch";
 import { useFetchCurrencies } from "./hooks/useFetchCurrencies";
 import CryptoTable from "./components/Table";
 import { PageContainer, PageErrorFallback, PageLoader } from "./components/lib";
@@ -9,12 +10,22 @@ import {
   bodyColor,
   scrollbarThumbColor,
 } from "./styles/colors";
+import { useCurrency } from "./hooks/useCurrency";
 
 const App = () => {
-  const { data, error } = useFetchCurrencies();
+  const [fiat, setFiat] = useCurrency();
+  const { data, error, isValidating } = useFetchCurrencies({
+    convert: fiat,
+  });
 
-  if (error) return <PageErrorFallback error={error} />;
-  if (!data) return <PageLoader />;
+  function handleSetFiat() {
+    if (fiat === "PHP") setFiat("USD");
+    else setFiat("PHP");
+  }
+
+  if (error) {
+    return <PageErrorFallback error={error} />;
+  }
 
   return (
     <PageContainer
@@ -38,8 +49,20 @@ const App = () => {
         }
       `}
     >
-      <h1>CoinTrack</h1>
-      <CryptoTable data={data} />
+      <div
+        css={{
+          position: "fixed",
+          display: "flex",
+          justifyContent: "space-between",
+          top: 0,
+        }}
+      >
+        <h1>CoinTrack</h1>
+        <button onClick={handleSetFiat} disabled={isValidating}>
+          {fiat}
+        </button>
+      </div>
+      {data ? <CryptoTable data={data} /> : <PageLoader />}
     </PageContainer>
   );
 };

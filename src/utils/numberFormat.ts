@@ -1,6 +1,6 @@
-const currencyFormatter = new Intl.NumberFormat("en-US", {
+const currencyFormatter = (currency = 'PHP') => new Intl.NumberFormat("en-US", {
   style: "currency",
-  currency: "PHP",
+  currency,
   minimumFractionDigits: 2,
 });
 
@@ -12,11 +12,11 @@ const formatPercentage = (value: string | number) => {
   return `${new Intl.NumberFormat().format(value * 100)}%`;
 }
 
-const formatCurrency = (value: string | number) => {
+const formatCurrency = (value: string | number, currency = 'PHP') => {
   if (typeof value === "string") {
-    return currencyFormatter.format(parseFloat(value));
+    return currencyFormatter(currency).format(parseFloat(value));
   }
 
-  return currencyFormatter.format(value);
+  return currencyFormatter(currency).format(value);
 };
 export { formatPercentage, formatCurrency };

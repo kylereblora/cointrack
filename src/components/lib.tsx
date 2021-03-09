@@ -2,11 +2,13 @@
 import { jsx, keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { ImSpinner2 } from "react-icons/im";
+import { useCurrency } from "../hooks/useCurrency";
 import {
   backgroundColor,
   bodyColor,
   negativeColor,
   positiveColor,
+  secondaryColor,
 } from "../styles/colors";
 import { formatCurrency, formatPercentage } from "../utils/numberFormat";
 
@@ -30,7 +32,8 @@ const CoinLogo = styled.img({
   maxHeight: "26px",
   margin: "0 auto",
   borderRadius: "100%",
-  background: bodyColor,
+  background: secondaryColor,
+  padding: '2px',
 });
 
 const P = styled.p({
@@ -43,7 +46,8 @@ interface PTextProps {
 }
 
 function CurrencyText({ value }: PTextProps) {
-  return <P>{formatCurrency(value)}</P>;
+  const [fiat] = useCurrency()
+  return <P>{formatCurrency(value, fiat)}</P>;
 }
 
 const percentageTextVariant = {
@@ -95,8 +99,11 @@ interface PageErrorFallbackProps {
 }
 
 function PageErrorFallback({ error }: PageErrorFallbackProps) {
+  console.log(`error is dis: ${error}`);
   return (
-    <CenteredPageContainer>
+    <CenteredPageContainer css={{
+      flexDirection: 'column',
+    }}>
       <h2>Encountered an error:</h2>
       <div
         css={{
@@ -112,6 +119,8 @@ function PageErrorFallback({ error }: PageErrorFallbackProps) {
 
 const Table = styled.table`
   margin: auto;
+  margin-top: 40px;
+  min-width: 255px;
   & > thead {
     text-align: left;
   }
