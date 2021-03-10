@@ -4,7 +4,7 @@ import * as React from "react";
 import { useSelect } from "downshift";
 import { useCurrency } from "../hooks/useCurrency";
 
-const items = ["PHP", "USD"];
+const fiatItems = ["PHP", "USD", "EUR", "JPY"];
 
 function FiatDropdown() {
   const {
@@ -15,7 +15,7 @@ function FiatDropdown() {
     getMenuProps,
     highlightedIndex,
     getItemProps,
-  } = useSelect({ items });
+  } = useSelect({ items: fiatItems });
 
   const [fiat, setFiat] = useCurrency();
 
@@ -40,7 +40,7 @@ function FiatDropdown() {
         {...getMenuProps()}
       >
         {isOpen &&
-          items.map((item, index) => (
+          fiatItems.map((item, index) => (
             <li
               style={
                 highlightedIndex === index ? { backgroundColor: "#bde4ff" } : {}
