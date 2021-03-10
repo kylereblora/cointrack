@@ -8,6 +8,19 @@ interface CellValueProp {
   value: string;
 }
 
+function getColumnStyles(columnId: string) {
+  switch (columnId) {
+    case "price":
+      return { style: { width: "100px" } };
+
+    case "24h%":
+      return { style: { width: "50px" } };
+
+    default:
+      return undefined;
+  }
+}
+
 function CryptoTable({ data }: any) {
   const columns = React.useMemo(
     () => [
@@ -55,9 +68,7 @@ function CryptoTable({ data }: any) {
         Header: () => <P>24H %</P>,
         accessor: (row: any) => row["1d"].price_change_pct,
         id: "24h%",
-        Cell: ({ value }: CellValueProp) => (
-          <PercentageText value={value} />
-        ),
+        Cell: ({ value }: CellValueProp) => <PercentageText value={value} />,
       },
     ],
     []
@@ -80,7 +91,9 @@ function CryptoTable({ data }: any) {
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+              <th {...column.getHeaderProps({ ...getColumnStyles(column.id) })}>
+                {column.render("Header")}
+              </th>
             ))}
           </tr>
         ))}
@@ -89,7 +102,15 @@ function CryptoTable({ data }: any) {
         {rows.map((row, i) => {
           prepareRow(row);
           return (
-            <tr {...row.getRowProps()}>
+            <tr
+              css={css`
+                padding: 33px;
+                &:hover {
+                  background-color: black;
+                }
+              `}
+              {...row.getRowProps()}
+            >
               {row.cells.map((cell) => {
                 return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
               })}

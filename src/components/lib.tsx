@@ -10,6 +10,11 @@ import {
   positiveColor,
   secondaryColor,
 } from "../styles/colors";
+import {
+  headerHeight,
+  pageHeight,
+  pageWidth,
+} from "../styles/sizes";
 import { formatCurrency, formatPercentage } from "../utils/numberFormat";
 
 const spin = keyframes({
@@ -32,8 +37,8 @@ const CoinLogo = styled.img({
   maxHeight: "26px",
   margin: "0 auto",
   borderRadius: "100%",
-  background: secondaryColor,
-  padding: '2px',
+  background: bodyColor,
+  padding: "2px",
 });
 
 const P = styled.p({
@@ -46,7 +51,7 @@ interface PTextProps {
 }
 
 function CurrencyText({ value }: PTextProps) {
-  const [fiat] = useCurrency()
+  const [fiat] = useCurrency();
   return <P>{formatCurrency(value, fiat)}</P>;
 }
 
@@ -76,8 +81,8 @@ function PercentageText({ value }: PTextProps) {
 const PageContainer = styled.div({
   backgroundColor: backgroundColor,
   color: bodyColor,
-  height: "300px",
-  width: "300px",
+  height: pageHeight,
+  width: pageWidth,
 });
 
 const CenteredPageContainer = styled(PageContainer)({
@@ -98,12 +103,13 @@ interface PageErrorFallbackProps {
   error: string;
 }
 
-function PageErrorFallback({ error }: PageErrorFallbackProps) {
-  console.log(`error is dis: ${error}`);
+function PageErrorFallback() {
   return (
-    <CenteredPageContainer css={{
-      flexDirection: 'column',
-    }}>
+    <CenteredPageContainer
+      css={{
+        flexDirection: "column",
+      }}
+    >
       <h2>Encountered an error:</h2>
       <div
         css={{
@@ -111,16 +117,16 @@ function PageErrorFallback({ error }: PageErrorFallbackProps) {
           backgroundColor: negativeColor,
         }}
       >
-        {error}
+        <p>Something went wrong.</p>
       </div>
     </CenteredPageContainer>
   );
 }
 
 const Table = styled.table`
-  margin: auto;
-  margin-top: 40px;
+  margin: ${headerHeight} auto auto auto;
   min-width: 255px;
+  border-spacing: 0;
   & > thead {
     text-align: left;
   }

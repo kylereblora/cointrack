@@ -38,12 +38,12 @@
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
     "axios": "^0.21.1",
+    "downshift": "^6.1.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-hot-loader": "^4.13.0",
     "react-icons": "^4.2.0",
     "react-scripts": "^4.0.3",
-    "react-switch": "^6.0.0",
     "react-table": "^7.6.3",
     "swr": "^0.4.2"
   }

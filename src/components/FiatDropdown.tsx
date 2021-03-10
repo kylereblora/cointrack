@@ -1,0 +1,65 @@
+/** @jsx jsx */
+import { css, jsx } from "@emotion/react";
+import * as React from "react";
+import { useSelect } from "downshift";
+import { useCurrency } from "../hooks/useCurrency";
+
+const items = ["PHP", "USD"];
+
+function FiatDropdown() {
+  const {
+    isOpen,
+    selectedItem,
+    getToggleButtonProps,
+    getLabelProps,
+    getMenuProps,
+    highlightedIndex,
+    getItemProps,
+  } = useSelect({ items });
+
+  const [fiat, setFiat] = useCurrency();
+
+  console.log({ ...getToggleButtonProps() });
+  return (
+    <div>
+      <div
+        css={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <label {...getLabelProps()}>Currency</label>
+        <button type="button" {...getToggleButtonProps()}>
+          {selectedItem || fiat}
+        </button>
+      </div>
+      <ul
+        css={{
+          listStyle: "none",
+        }}
+        {...getMenuProps()}
+      >
+        {isOpen &&
+          items.map((item, index) => (
+            <li
+              style={
+                highlightedIndex === index ? { backgroundColor: "#bde4ff" } : {}
+              }
+              key={`${item}${index}`}
+              {...getItemProps({
+                item,
+                index,
+                onClick: () => {
+                  setFiat(item);
+                },
+              })}
+            >
+              {item}
+            </li>
+          ))}
+      </ul>
+    </div>
+  );
+}
+
+export default FiatDropdown;
