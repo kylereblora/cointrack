@@ -19,10 +19,6 @@ const App = () => {
     convert: fiat,
   });
 
-  if (error) {
-    return <PageErrorFallback />;
-  }
-
   return (
     <PageContainer
       css={css`
@@ -72,7 +68,7 @@ const App = () => {
           <FiatDropdown />
         </div>
       </div>
-      {data ? <CryptoTable data={data} /> : <PageLoader />}
+      {data ? <CryptoTable data={data} /> : error ? <PageErrorFallback /> : <PageLoader />}
     </PageContainer>
   );
 };

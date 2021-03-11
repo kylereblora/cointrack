@@ -6,15 +6,12 @@ import { useCurrency } from "../hooks/useCurrency";
 import {
   backgroundColor,
   bodyColor,
+  hoverColor,
   negativeColor,
   positiveColor,
   secondaryColor,
 } from "../styles/colors";
-import {
-  headerHeight,
-  pageHeight,
-  pageWidth,
-} from "../styles/sizes";
+import { headerHeight, pageHeight, pageWidth } from "../styles/sizes";
 import { formatCurrency, formatPercentage } from "../utils/numberFormat";
 
 const spin = keyframes({
@@ -25,12 +22,30 @@ const spin = keyframes({
 const Spinner = styled(ImSpinner2)({
   animation: `${spin} 1s linear infinite`,
   color: bodyColor,
-  height: "35px",
-  width: "35px",
+  height: `calc(${headerHeight} / 2)`,
+  width: `calc(${headerHeight} / 2)`,
 });
 Spinner.defaultProps = {
   "aria-label": "loading",
 };
+
+const Button = styled.button`
+  padding: 5px;
+  width: 60px;
+  background: transparent;
+  border: none;
+  border-radius: 5px;
+  color: ${secondaryColor};
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Rubik', sans-serif;
+  &:hover {
+    background: ${hoverColor};
+  }
+`;
 
 const CoinLogo = styled.img({
   maxWidth: "26px",
@@ -41,18 +56,16 @@ const CoinLogo = styled.img({
   padding: "2px",
 });
 
-const P = styled.p({
-  color: bodyColor,
+const PAlignRight = styled.p({
   textAlign: "right",
 });
-
 interface PTextProps {
   value: string | number;
 }
 
 function CurrencyText({ value }: PTextProps) {
   const [fiat] = useCurrency();
-  return <P>{formatCurrency(value, fiat)}</P>;
+  return <PAlignRight>{formatCurrency(value, fiat)}</PAlignRight>;
 }
 
 const percentageTextVariant = {
@@ -66,7 +79,7 @@ const percentageTextVariant = {
 
 function PercentageText({ value }: PTextProps) {
   return (
-    <P
+    <PAlignRight
       css={
         Number(value) > 0
           ? percentageTextVariant["positive"]
@@ -74,7 +87,7 @@ function PercentageText({ value }: PTextProps) {
       }
     >
       {formatPercentage(value)}
-    </P>
+    </PAlignRight>
   );
 }
 
@@ -99,9 +112,6 @@ function PageLoader() {
   );
 }
 
-interface PageErrorFallbackProps {
-  error: string;
-}
 
 function PageErrorFallback() {
   return (
@@ -114,31 +124,47 @@ function PageErrorFallback() {
       <div
         css={{
           padding: "10px",
-          backgroundColor: negativeColor,
         }}
       >
-        <p>Something went wrong.</p>
+        <p>Something went wrong. Retrying...</p>
       </div>
     </CenteredPageContainer>
   );
 }
 
 const Table = styled.table`
-  margin: ${headerHeight} auto auto auto;
-  min-width: 255px;
   border-spacing: 0;
+  width: 100%;
+  margin: ${headerHeight} 0 0 0;
   & > thead {
     text-align: left;
+  }
+  td,
+  th {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  td:first-child,
+  th:first-child {
+    padding-left: 10px;
+    padding-right: 0;
+  }
+  td:nth-child(4),
+  th:nth-child(4),
+  td:last-child,
+  th:last-child {
+    padding-right: 10px;
   }
 `;
 
 export {
+  Button,
   CoinLogo,
   CurrencyText,
-  P,
-  PercentageText,
   PageContainer,
   PageLoader,
+  PAlignRight,
+  PercentageText,
   PageErrorFallback,
   Table,
 };

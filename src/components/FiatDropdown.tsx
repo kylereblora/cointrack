@@ -3,7 +3,9 @@ import { css, jsx } from "@emotion/react";
 import * as React from "react";
 import { useSelect } from "downshift";
 import { useCurrency } from "../hooks/useCurrency";
-import { backgroundColor } from "../styles/colors";
+import { backgroundColor, hoverColor } from "../styles/colors";
+import { Button } from "./lib";
+import { FiChevronDown } from "react-icons/fi";
 
 const fiatItems = ["PHP", "USD", "EUR", "JPY"];
 
@@ -12,7 +14,6 @@ function FiatDropdown() {
     isOpen,
     selectedItem,
     getToggleButtonProps,
-    getLabelProps,
     getMenuProps,
     highlightedIndex,
     getItemProps,
@@ -20,35 +21,46 @@ function FiatDropdown() {
 
   const [fiat, setFiat] = useCurrency();
 
-  console.log({ ...getToggleButtonProps() });
   return (
     <div>
       <div
         css={{
+          height: "100%",
           display: "flex",
-          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <label {...getLabelProps()}>Currency</label>
-        <button type="button" {...getToggleButtonProps()}>
+        <Button type="button" {...getToggleButtonProps()}>
           {selectedItem || fiat}
-        </button>
+          <FiChevronDown
+            css={{
+              marginLeft: "6px",
+            }}
+          />
+        </Button>
       </div>
       <ul
         css={{
           listStyle: "none",
           position: "absolute",
           zIndex: 1000,
-          minWidth: "50px",
+          minWidth: "60px",
           backgroundColor: backgroundColor,
+          border: "none",
         }}
         {...getMenuProps()}
       >
         {isOpen &&
           fiatItems.map((item, index) => (
             <li
+              css={{
+                padding: "5px",
+              }}
               style={
-                highlightedIndex === index ? { backgroundColor: "#bde4ff" } : {}
+                highlightedIndex === index
+                  ? { backgroundColor: hoverColor }
+                  : {}
               }
               key={`${item}${index}`}
               {...getItemProps({

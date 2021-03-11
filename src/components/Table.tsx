@@ -2,7 +2,8 @@
 import { css, jsx } from "@emotion/react";
 import * as React from "react";
 import { useTable } from "react-table";
-import { CoinLogo, CurrencyText, P, PercentageText, Table } from "./lib";
+import { hoverColor, secondaryColor } from "../styles/colors";
+import { CoinLogo, CurrencyText, PAlignRight, PercentageText, Table } from "./lib";
 
 interface CellValueProp {
   value: string;
@@ -11,10 +12,10 @@ interface CellValueProp {
 function getColumnStyles(columnId: string) {
   switch (columnId) {
     case "price":
-      return { style: { width: "100px" } };
+      return { width: "105px" };
 
     case "24h%":
-      return { style: { width: "50px" } };
+      return { width: "50px" };
 
     default:
       return undefined;
@@ -55,17 +56,17 @@ function CryptoTable({ data }: any) {
               alignItems: "center",
             }}
           >
-            <p css={{ fontWeight: "bold" }}>{currency}</p>
+            <p css={{ fontWeight: 500 }}>{currency}</p>
           </div>
         ),
       },
       {
-        Header: () => <P>Price</P>,
+        Header: () => <PAlignRight>Price</PAlignRight>,
         accessor: "price",
         Cell: ({ value }: CellValueProp) => <CurrencyText value={value} />,
       },
       {
-        Header: () => <P>24H %</P>,
+        Header: () => <PAlignRight>24h %</PAlignRight>,
         accessor: (row: any) => row["1d"].price_change_pct,
         id: "24h%",
         Cell: ({ value }: CellValueProp) => <PercentageText value={value} />,
@@ -91,7 +92,18 @@ function CryptoTable({ data }: any) {
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps({ ...getColumnStyles(column.id) })}>
+              <th
+                {...column.getHeaderProps({
+                  style: {
+                    borderTop: `1px solid ${hoverColor}`,
+                    borderBottom: `1px solid ${hoverColor}`,
+                    color: secondaryColor,
+                    fontSize: '12px',
+                    fontWeight: 300,
+                    ...getColumnStyles(column.id),
+                  },
+                })}
+              >
                 {column.render("Header")}
               </th>
             ))}
@@ -104,9 +116,8 @@ function CryptoTable({ data }: any) {
           return (
             <tr
               css={css`
-                padding: 33px;
                 &:hover {
-                  background-color: black;
+                  background-color: ${hoverColor};
                 }
               `}
               {...row.getRowProps()}
