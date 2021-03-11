@@ -3,6 +3,7 @@ import { css, jsx } from "@emotion/react";
 import * as React from "react";
 import { useSelect } from "downshift";
 import { useCurrency } from "../hooks/useCurrency";
+import { backgroundColor } from "../styles/colors";
 
 const fiatItems = ["PHP", "USD", "EUR", "JPY"];
 
@@ -36,6 +37,10 @@ function FiatDropdown() {
       <ul
         css={{
           listStyle: "none",
+          position: "absolute",
+          zIndex: 1000,
+          minWidth: "50px",
+          backgroundColor: backgroundColor,
         }}
         {...getMenuProps()}
       >
