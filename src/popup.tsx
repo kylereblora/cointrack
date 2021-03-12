@@ -6,9 +6,11 @@ import { CurrencyProvider } from "./context/currencyContext";
 import "./popup.scss";
 
 var mountNode = document.getElementById("popup");
-ReactDOM.render(
-  <CurrencyProvider>
-    <App />
-  </CurrencyProvider>,
-  mountNode
-);
+chrome.storage.sync.get(['fiat'], (result) => {
+  ReactDOM.render(
+    <CurrencyProvider {...result}>
+      <App />
+    </CurrencyProvider>,
+    mountNode
+  );
+})
