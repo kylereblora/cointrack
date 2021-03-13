@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "start": "webpack --watch"
+    "start": "webpack --watch",
+    "prepare": "husky install"
   },
   "keywords": [],
   "license": "ISC",
@@ -23,7 +24,10 @@
     "css-loader": "^5.0.0",
     "dotenv-webpack": "^7.0.1",
     "file-loader": "^6.1.1",
+    "husky": "^5.1.3",
     "mini-css-extract-plugin": "^1.3.9",
+    "prettier": "2.2.1",
+    "pretty-quick": "^3.1.0",
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
