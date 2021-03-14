@@ -62,13 +62,24 @@ const App = () => {
               flexDirection: "column",
             }}
           >
-            <h1>CoinTrack</h1>
-            <p>API by Nomics</p>
+            <h1
+              css={{
+                fontWeight: "normal",
+              }}
+            >
+              CoinTrack
+            </h1>
           </div>
           <FiatDropdown />
         </div>
       </div>
-      {data ? <CryptoTable data={data} /> : error ? <PageErrorFallback /> : <PageLoader />}
+      {data ? (
+        <CryptoTable data={data} />
+      ) : error ? (
+        <PageErrorFallback />
+      ) : (
+        <PageLoader />
+      )}
     </PageContainer>
   );
 };
