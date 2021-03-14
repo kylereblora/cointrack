@@ -2,7 +2,7 @@
   "name": "CoinTrack",
   "description": "Track cryptocurrency prices from your browser.",
   "manifest_version": 2,
-  "version": "1.0.0",
+  "version": "0.1.0",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
@@ -15,23 +15,11 @@
     },
     "default_popup": "popup.html"
   },
-  "background": {
-    "scripts": [
-      "background.js"
-    ],
-    "persistent": false
-  },
   "content_scripts": [
     {
-      "matches": [
-        "*://*/*"
-      ],
-      "js": [
-        "content.js"
-      ]
+      "matches": ["*://*/*"],
+      "js": ["content.js"]
     }
   ],
-  "permissions": [
-    "storage"
-  ]
+  "permissions": ["storage"]
 }
