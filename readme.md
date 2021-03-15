@@ -1,11 +1,5 @@
-# CoinTrack
-
-Track cryptocurrency prices from your browser.
-
-TODOs:
-
-- [x] Switch fiat conversion between USD and PHP
-- [ ] Infinite scrolling
-- [x] Polish UI/UX
-- [x] Better error handling
-- [ ] Clean up code
+<p align="center">
+  <img src='public/icon128.png' alt='CoinTrack logo' height="96"/>
+  <h1 align="center">CoinTrack</h1>
+</p>
+<p align="center">Track cryptocurrency prices from your browser.</p>
