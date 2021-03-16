@@ -7,7 +7,7 @@ import { backgroundColor, hoverColor } from "../styles/colors";
 import { Button } from "./lib";
 import { FiChevronDown } from "react-icons/fi";
 
-const fiatItems = ["USD", "EUR", "JPY", "PHP"];
+const fiatItems = ["USD", "EUR", "JPY", "KRW", "PHP"];
 
 function FiatDropdown() {
   const {
