@@ -17,7 +17,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://*/*"],
+      "matches": ["https://api.nomics.com/v1/*"],
       "js": ["content.js"]
     }
   ],
