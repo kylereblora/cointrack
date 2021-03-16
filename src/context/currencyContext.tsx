@@ -1,8 +1,21 @@
 import * as React from "react";
 
-const CurrencyContext = React.createContext<[any, any]>([null, null]);
+type CurrencyContextType = [
+  string,
+  React.Dispatch<React.SetStateAction<string>>
+];
 
-function CurrencyProvider(props: any) {
+type CurrencyProviderProps = {
+  children: React.ReactNode;
+  fiat?: string;
+};
+
+const CurrencyContext = React.createContext<CurrencyContextType>([
+  null!,
+  null!,
+]);
+
+function CurrencyProvider(props: CurrencyProviderProps) {
   const [fiat, setFiat] = React.useState(props.fiat || "USD");
 
   React.useEffect(() => {

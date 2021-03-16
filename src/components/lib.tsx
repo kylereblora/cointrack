@@ -41,7 +41,7 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   &:hover {
     background: ${hoverColor};
   }
@@ -59,9 +59,9 @@ const CoinLogo = styled.img({
 const PAlignRight = styled.p({
   textAlign: "right",
 });
-interface PTextProps {
+type PTextProps = {
   value: string | number;
-}
+};
 
 function CurrencyText({ value }: PTextProps) {
   const [fiat] = useCurrency();
@@ -111,7 +111,6 @@ function PageLoader() {
     </CenteredPageContainer>
   );
 }
-
 
 function PageErrorFallback() {
   return (

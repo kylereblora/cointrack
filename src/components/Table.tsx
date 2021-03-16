@@ -3,11 +3,17 @@ import { css, jsx } from "@emotion/react";
 import * as React from "react";
 import { useTable } from "react-table";
 import { hoverColor, secondaryColor } from "../styles/colors";
-import { CoinLogo, CurrencyText, PAlignRight, PercentageText, Table } from "./lib";
+import {
+  CoinLogo,
+  CurrencyText,
+  PAlignRight,
+  PercentageText,
+  Table,
+} from "./lib";
 
-interface CellValueProp {
+type CellValueProp = {
   value: string;
-}
+};
 
 function getColumnStyles(columnId: string) {
   switch (columnId) {
@@ -98,7 +104,7 @@ function CryptoTable({ data }: any) {
                     borderTop: `1px solid ${hoverColor}`,
                     borderBottom: `1px solid ${hoverColor}`,
                     color: secondaryColor,
-                    fontSize: '12px',
+                    fontSize: "12px",
                     fontWeight: 300,
                     ...getColumnStyles(column.id),
                   },
