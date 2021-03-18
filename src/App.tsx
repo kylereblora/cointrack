@@ -11,7 +11,7 @@ import {
 } from "./styles/colors";
 import { useCurrency } from "./hooks/useCurrency";
 import { scrollbarHeight, scrollbarWidth } from "./styles/sizes";
-import FiatDropdown from "./components/fiatDropdown";
+import Header from "./components/header";
 
 const App = () => {
   const [fiat] = useCurrency();
@@ -41,38 +41,7 @@ const App = () => {
         }
       `}
     >
-      <div
-        css={{
-          position: "fixed",
-          top: 0,
-          padding: "10px",
-          backgroundColor: backgroundColor,
-          width: "100%",
-        }}
-      >
-        <div
-          css={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          <div
-            css={{
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <h1
-              css={{
-                fontWeight: "normal",
-              }}
-            >
-              CoinTrack
-            </h1>
-          </div>
-          <FiatDropdown />
-        </div>
-      </div>
+      <Header />
       {data ? (
         <CryptoTable data={data} />
       ) : error ? (
