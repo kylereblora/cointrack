@@ -14,7 +14,7 @@ npm i -D @babel/core @testing-library/jest-dom @testing-library/react @types/jes
 
 We'll create a new config file in order to customize the project's babel configuration.
 
-```json
+```js
 // babel.config.js
 module.exports = {
   presets: [
@@ -29,14 +29,14 @@ module.exports = {
 
 Required in order to prevent [this](https://github.com/testing-library/react-testing-library/issues/379) from happening.
 
-```json
+```js
 // setupTest.ts
 import "@testing-library/jest-dom/extend-expect";
 ```
 
 Then, reference that inside the `jest` property in our `package.json`:
 
-```json
+```js
 {
   ...,
   "jest": {
