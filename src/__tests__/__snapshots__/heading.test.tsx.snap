@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the header component properly 1`] = `
+<div>
+  <div
+    class="css-1q24bon-Header"
+  >
+    <div
+      class="css-heqg68-Header"
+    >
+      <div
+        class="css-e890g1-Header"
+      >
+        <h1
+          class="css-u111td-Header"
+        >
+          CoinTrack
+        </h1>
+      </div>
+      <div>
+        <div
+          class="css-z5adpb-FiatDropdown"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="listbox"
+            aria-labelledby="downshift-0-label downshift-0-toggle-button"
+            class="css-ax4dup"
+            id="downshift-0-toggle-button"
+            type="button"
+          >
+            USD
+            <svg
+              class="css-yi2kl5-FiatDropdown"
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline
+                points="6 9 12 15 18 9"
+              />
+            </svg>
+          </button>
+        </div>
+        <ul
+          aria-labelledby="downshift-0-label"
+          class="css-nngvzr-FiatDropdown"
+          id="downshift-0-menu"
+          role="listbox"
+          tabindex="-1"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { render as rtlRender, RenderOptions } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { CurrencyProvider } from "../context/currencyContext";
 
 type WrapperProps = {
@@ -17,4 +18,4 @@ function render(ui: React.ReactElement, options?: RenderOptions) {
 
 export * from "@testing-library/react";
 
-export { render };
+export { render, userEvent };
