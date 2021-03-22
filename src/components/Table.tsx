@@ -55,16 +55,31 @@ function CryptoTable({ data }: any) {
       {
         Header: "Name",
         accessor: "currency",
-        Cell: ({ value: currency }: CellValueProp) => (
-          <div
-            css={{
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <p css={{ fontWeight: 500 }}>{currency}</p>
-          </div>
-        ),
+        Cell: (props: any) => {
+          return (
+            <div
+              css={{
+                display: "flex",
+                flexDirection: "column",
+                overflow: "hidden",
+              }}
+            >
+              <p css={{ fontWeight: 500 }}>{props.value}</p>
+              <p
+                css={{
+                  width: "80px",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  fontWeight: "lighter",
+                  color: secondaryColor,
+                }}
+              >
+                {props.row.original.name}
+              </p>
+            </div>
+          );
+        },
       },
       {
         Header: () => <PAlignRight>Price</PAlignRight>,
