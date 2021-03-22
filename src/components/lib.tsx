@@ -3,14 +3,6 @@ import { jsx, keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { ImSpinner2 } from "react-icons/im";
 import { useCurrency } from "../hooks/useCurrency";
-import {
-  backgroundColor,
-  bodyColor,
-  hoverColor,
-  negativeColor,
-  positiveColor,
-  secondaryColor,
-} from "../styles/colors";
 import { headerHeight, pageHeight, pageWidth } from "../styles/sizes";
 import { formatCurrency, formatPercentage } from "../utils/numberFormat";
 
@@ -21,7 +13,7 @@ const spin = keyframes({
 
 const Spinner = styled(ImSpinner2)({
   animation: `${spin} 1s linear infinite`,
-  color: bodyColor,
+  color: "var(--color-body)",
   height: `calc(${headerHeight} / 2)`,
   width: `calc(${headerHeight} / 2)`,
 });
@@ -35,15 +27,28 @@ const Button = styled.button`
   background: transparent;
   border: none;
   border-radius: 5px;
-  color: ${secondaryColor};
+  color: var(--color-secondary);
   cursor: pointer;
   font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Rubik", sans-serif;
+  font-size: 14px;
   &:hover {
-    background: ${hoverColor};
+    background-color: var(--color-hover);
+  }
+`;
+
+const IconButton = styled.button`
+  padding: 5px;
+  background: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  &:hover {
+    background-color: var(--color-hover);
   }
 `;
 
@@ -52,7 +57,7 @@ const CoinLogo = styled.img({
   maxHeight: "26px",
   margin: "0 auto",
   borderRadius: "100%",
-  background: bodyColor,
+  background: "var(--color-icon-background)",
   padding: "2px",
 });
 
@@ -70,10 +75,10 @@ function CurrencyText({ value }: PTextProps) {
 
 const percentageTextVariant = {
   positive: {
-    color: positiveColor,
+    color: "var(--color-positive)",
   },
   negative: {
-    color: negativeColor,
+    color: "var(--color-negative)",
   },
 };
 
@@ -92,8 +97,8 @@ function PercentageText({ value }: PTextProps) {
 }
 
 const PageContainer = styled.div({
-  backgroundColor: backgroundColor,
-  color: bodyColor,
+  backgroundColor: "var(--color-background)",
+  color: "var(--color-body)",
   height: pageHeight,
   width: pageWidth,
 });
@@ -160,6 +165,7 @@ export {
   Button,
   CoinLogo,
   CurrencyText,
+  IconButton,
   PageContainer,
   PageLoader,
   PAlignRight,

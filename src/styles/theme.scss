@@ -1,0 +1,21 @@
+body[data-theme="dark"] {
+  --color-background: #282c34;
+  --color-hover: #323842;
+  --color-body: white;
+  --color-secondary: #d6d6d6;
+  --color-scrollbar-thumb: #fafafa;
+  --color-positive: #49bb07;
+  --color-negative: #f52d23;
+  --color-icon-background: white;
+}
+
+body[data-theme="light"] {
+  --color-background: #f5f5f5;
+  --color-hover: #eeeeee;
+  --color-body: #282c34;
+  --color-secondary: #323842;
+  --color-scrollbar-thumb: #0a0a0a;
+  --color-positive: #389601;
+  --color-negative: #ce0a00;
+  --color-icon-background: #ffffff;
+}

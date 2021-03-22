@@ -3,7 +3,7 @@
 exports[`renders the header component properly 1`] = `
 <div>
   <div
-    class="css-1q24bon-Header"
+    class="css-1bcrtbn-Header"
   >
     <div
       class="css-heqg68-Header"
@@ -17,44 +17,67 @@ exports[`renders the header component properly 1`] = `
           CoinTrack
         </h1>
       </div>
-      <div>
-        <div
-          class="css-z5adpb-FiatDropdown"
-        >
-          <button
-            aria-expanded="false"
-            aria-haspopup="listbox"
-            aria-labelledby="downshift-0-label downshift-0-toggle-button"
-            class="css-ax4dup"
-            id="downshift-0-toggle-button"
-            type="button"
+      <div
+        class="css-ep5f3r-Header"
+      >
+        <div>
+          <div
+            class="css-z5adpb-FiatDropdown"
           >
-            USD
-            <svg
-              class="css-yi2kl5-FiatDropdown"
-              fill="none"
-              height="1em"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
+            <button
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-labelledby="downshift-0-label downshift-0-toggle-button"
+              class="css-135gucz"
+              id="downshift-0-toggle-button"
+              type="button"
             >
-              <polyline
-                points="6 9 12 15 18 9"
-              />
-            </svg>
-          </button>
+              USD
+              <svg
+                class="css-yi2kl5-FiatDropdown"
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polyline
+                  points="6 9 12 15 18 9"
+                />
+              </svg>
+            </button>
+          </div>
+          <ul
+            aria-labelledby="downshift-0-label"
+            class="css-kmikvz-FiatDropdown"
+            id="downshift-0-menu"
+            role="listbox"
+            tabindex="-1"
+          />
         </div>
-        <ul
-          aria-labelledby="downshift-0-label"
-          class="css-nngvzr-FiatDropdown"
-          id="downshift-0-menu"
-          role="listbox"
-          tabindex="-1"
-        />
+        <button
+          class="css-xk7hbq-ThemeToggler"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+            />
+          </svg>
+        </button>
       </div>
     </div>
   </div>

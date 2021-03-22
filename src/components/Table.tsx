@@ -2,7 +2,6 @@
 import { css, jsx } from "@emotion/react";
 import * as React from "react";
 import { useTable } from "react-table";
-import { hoverColor, secondaryColor } from "../styles/colors";
 import {
   CoinLogo,
   CurrencyText,
@@ -72,7 +71,7 @@ function CryptoTable({ data }: any) {
                   overflow: "hidden",
                   textOverflow: "ellipsis",
                   fontWeight: "lighter",
-                  color: secondaryColor,
+                  color: "var(--color-secondary)",
                 }}
               >
                 {props.row.original.name}
@@ -116,9 +115,9 @@ function CryptoTable({ data }: any) {
               <th
                 {...column.getHeaderProps({
                   style: {
-                    borderTop: `1px solid ${hoverColor}`,
-                    borderBottom: `1px solid ${hoverColor}`,
-                    color: secondaryColor,
+                    borderTop: `1px solid var(--color-hover)`,
+                    borderBottom: `1px solid var(--color-hover)`,
+                    color: "var(--color-secondary)",
                     fontSize: "12px",
                     fontWeight: 300,
                     ...getColumnStyles(column.id),
@@ -138,7 +137,7 @@ function CryptoTable({ data }: any) {
             <tr
               css={css`
                 &:hover {
-                  background-color: ${hoverColor};
+                  background-color: var(--color-hover);
                 }
               `}
               {...row.getRowProps()}

@@ -3,7 +3,6 @@ import { css, jsx } from "@emotion/react";
 import * as React from "react";
 import { useSelect } from "downshift";
 import { useCurrency } from "../hooks/useCurrency";
-import { backgroundColor, hoverColor } from "../styles/colors";
 import { Button } from "./lib";
 import { FiChevronDown } from "react-icons/fi";
 
@@ -46,7 +45,7 @@ function FiatDropdown() {
           position: "absolute",
           zIndex: 1000,
           minWidth: "60px",
-          backgroundColor: backgroundColor,
+          backgroundColor: "var(--color-background)",
           border: "none",
         }}
         {...getMenuProps()}
@@ -59,7 +58,7 @@ function FiatDropdown() {
               }}
               style={
                 highlightedIndex === index
-                  ? { backgroundColor: hoverColor }
+                  ? { backgroundColor: "var(--color-hover)" }
                   : {}
               }
               key={`${item}${index}`}

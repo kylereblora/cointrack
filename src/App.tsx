@@ -4,11 +4,6 @@ import * as React from "react";
 import { useFetchCurrencies } from "./hooks/useFetchCurrencies";
 import CryptoTable from "./components/table";
 import { PageContainer, PageErrorFallback, PageLoader } from "./components/lib";
-import {
-  backgroundColor,
-  bodyColor,
-  scrollbarThumbColor,
-} from "./styles/colors";
 import { useCurrency } from "./hooks/useCurrency";
 import { scrollbarHeight, scrollbarWidth } from "./styles/sizes";
 import Header from "./components/header";
@@ -22,7 +17,7 @@ const App = () => {
   return (
     <PageContainer
       css={css`
-        color: ${bodyColor};
+        color: var(--color-body);
         overflow-y: scroll;
         overflow-x: hidden;
         &::-webkit-scrollbar {
@@ -30,14 +25,14 @@ const App = () => {
           height: ${scrollbarHeight};
         }
         &::-webkit-scrollbar-thumb {
-          background: ${scrollbarThumbColor};
+          background: var(--color-scrollbar-thumb);
         }
         &::-webkit-scrollbar-track {
-          background: ${backgroundColor};
+          background: var(--color-background);
         }
         & {
-          scrollbar-face-color: ${scrollbarThumbColor};
-          scrollbar-track-color: ${backgroundColor};
+          scrollbar-face-color: var(--color-scrollbar-thumb);
+          scrollbar-track-color: var(--color-background);
         }
       `}
     >

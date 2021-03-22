@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
 import * as React from "react";
-import { backgroundColor } from "../styles/colors";
 import FiatDropdown from "./fiatDropdown";
+import ThemeToggler from "./themeToggler";
 
 function Header() {
   return (
@@ -11,7 +11,7 @@ function Header() {
         position: "fixed",
         top: 0,
         padding: "10px",
-        backgroundColor: backgroundColor,
+        backgroundColor: "var(--color-background)",
         width: "100%",
       }}
     >
@@ -35,7 +35,14 @@ function Header() {
             CoinTrack
           </h1>
         </div>
-        <FiatDropdown />
+        <div
+          css={{
+            display: "flex",
+          }}
+        >
+          <FiatDropdown />
+          <ThemeToggler />
+        </div>
       </div>
     </div>
   );
