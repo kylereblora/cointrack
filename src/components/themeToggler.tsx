@@ -13,6 +13,7 @@ function ThemeToggler() {
   React.useEffect(() => {
     document.body.dataset.theme = theme;
     chrome.storage.sync.set({ theme });
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   return (

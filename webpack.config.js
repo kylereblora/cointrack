@@ -7,8 +7,13 @@ const config = {
   entry: {
     popup: path.join(__dirname, "src/popup.tsx"),
     content: path.join(__dirname, "src/content.ts"),
+    noflash: path.join(__dirname, "src/no-flash.ts"),
   },
-  output: { path: path.join(__dirname, "dist"), filename: "[name].js" },
+  output: {
+    path: path.join(__dirname, "dist"),
+    filename: "[name].js",
+    clean: true,
+  },
   module: {
     rules: [
       {
