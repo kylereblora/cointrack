@@ -1,6 +1,6 @@
 {
   "name": "cointrack",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "",
   "scripts": {
     "test": "npm run test:coverage && npm run test:watch",
