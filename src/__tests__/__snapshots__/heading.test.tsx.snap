@@ -3,38 +3,38 @@
 exports[`renders the header component properly 1`] = `
 <div>
   <div
-    class="css-1bcrtbn-Header"
+    class="emotion-test-util-key-1bcrtbn-Header"
   >
     <div
-      class="css-heqg68-Header"
+      class="emotion-test-util-key-heqg68-Header"
     >
       <div
-        class="css-e890g1-Header"
+        class="emotion-test-util-key-e890g1-Header"
       >
         <h1
-          class="css-u111td-Header"
+          class="emotion-test-util-key-u111td-Header"
         >
           CoinTrack
         </h1>
       </div>
       <div
-        class="css-ep5f3r-Header"
+        class="emotion-test-util-key-ep5f3r-Header"
       >
         <div>
           <div
-            class="css-z5adpb-FiatDropdown"
+            class="emotion-test-util-key-z5adpb-FiatDropdown"
           >
             <button
               aria-expanded="false"
               aria-haspopup="listbox"
               aria-labelledby="downshift-0-label downshift-0-toggle-button"
-              class="css-135gucz"
+              class="emotion-test-util-key-135gucz"
               id="downshift-0-toggle-button"
               type="button"
             >
               USD
               <svg
-                class="css-yi2kl5-FiatDropdown"
+                class="emotion-test-util-key-yi2kl5-FiatDropdown"
                 fill="none"
                 height="1em"
                 stroke="currentColor"
@@ -53,14 +53,14 @@ exports[`renders the header component properly 1`] = `
           </div>
           <ul
             aria-labelledby="downshift-0-label"
-            class="css-kmikvz-FiatDropdown"
+            class="emotion-test-util-key-kmikvz-FiatDropdown"
             id="downshift-0-menu"
             role="listbox"
             tabindex="-1"
           />
         </div>
         <button
-          class="css-xk7hbq-ThemeToggler"
+          class="emotion-test-util-key-xk7hbq-ThemeToggler"
         >
           <svg
             fill="none"

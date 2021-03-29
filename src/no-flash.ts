@@ -1,7 +1,6 @@
 (function () {
   try {
     var theme = localStorage.getItem("theme");
-    console.log(theme);
     var supportDarkTheme =
       window.matchMedia("(prefers-color-scheme: dark)").matches === true;
     if (!theme && supportDarkTheme) document.body.dataset.theme = "dark";

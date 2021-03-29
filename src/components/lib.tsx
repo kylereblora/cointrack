@@ -123,6 +123,7 @@ function PageErrorFallback() {
       css={{
         flexDirection: "column",
       }}
+      role="alert"
     >
       <h2>Encountered an error:</h2>
       <div
