@@ -32,10 +32,10 @@ function CryptoTable({ data }: any) {
     () => [
       {
         Header: "#",
-        accessor: "rank",
+        accessor: "market_cap_rank",
       },
       {
-        accessor: "logo_url",
+        accessor: "image",
         Cell: ({ value: logo_url }: CellValueProp) => (
           <div
             css={{
@@ -82,12 +82,12 @@ function CryptoTable({ data }: any) {
       },
       {
         Header: () => <PAlignRight>Price</PAlignRight>,
-        accessor: "price",
+        accessor: "current_price",
         Cell: ({ value }: CellValueProp) => <CurrencyText value={value} />,
       },
       {
         Header: () => <PAlignRight>24h %</PAlignRight>,
-        accessor: (row: any) => row["1d"].price_change_pct,
+        accessor: (row: any) => row.price_change_percentage_24h,
         id: "24h%",
         Cell: ({ value }: CellValueProp) => <PercentageText value={value} />,
       },

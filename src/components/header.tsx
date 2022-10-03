@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
 import * as React from "react";
-import FiatDropdown from "./fiatDropdown";
+import FiatDropdown from "./FiatDropdown";
 import ThemeToggler from "./themeToggler";
 
 function Header() {
@@ -34,6 +34,9 @@ function Header() {
           >
             CoinTrack
           </h1>
+          <p css={{
+            fontSize: 'x-small'
+          }}>Powered by CoinGecko</p>
         </div>
         <div
           css={{

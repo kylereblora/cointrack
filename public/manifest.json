@@ -1,14 +1,14 @@
 {
   "name": "CoinTrack",
   "description": "Track cryptocurrency prices from your browser.",
-  "manifest_version": 2,
-  "version": "0.2.2",
+  "manifest_version": 3,
+  "version": "1.0.0",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
     "128": "icon128.png"
   },
-  "browser_action": {
+  "action": {
     "default_icon": {
       "16": "icon16.png",
       "48": "icon48.png"
@@ -17,9 +17,15 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://api.nomics.com/v1/*"],
-      "js": ["content.js"]
+      "matches": [
+        "https://api.coingecko.com/api/v3/*"
+      ],
+      "js": [
+        "content.js"
+      ]
     }
   ],
-  "permissions": ["storage"]
+  "permissions": [
+    "storage"
+  ]
 }

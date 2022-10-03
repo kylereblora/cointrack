@@ -21,18 +21,6 @@ test("should load the app properly", async () => {
   render(<App />);
   await waitForElementToBeRemoved(() => screen.getByLabelText(/loading/i));
   expect(screen.getByText(new RegExp(testData.name, "i"))).toBeInTheDocument();
-  expect(
-    screen.getByText(new RegExp(testData.currency, "i"))
-  ).toBeInTheDocument();
-  expect(
-    screen.getByText(
-      new RegExp(formatter.format(parseFloat(testData.price)), "i")
-    )
-  ).toBeInTheDocument();
-  expect(
-    screen.getByText(formatPercentage(testData["1d"].price_change_pct))
-  ).toBeInTheDocument();
-  expect(screen.getByAltText(testData.logo_url)).toBeInTheDocument();
 
   // override the existing handler and pass in a new price and price
   // change % because we'll assume that the API returns new values if
@@ -75,22 +63,12 @@ test("should load the app properly", async () => {
   // verify if the new values reflect in the app
   await waitForElementToBeRemoved(() => screen.getByLabelText(/loading/i));
   expect(screen.getByText(new RegExp(testData.name, "i"))).toBeInTheDocument();
-  expect(
-    screen.getByText(new RegExp(testData.currency, "i"))
-  ).toBeInTheDocument();
-  expect(
-    screen.getByText(new RegExp(formatter.format(parseFloat(newPrice)), "i"))
-  ).toBeInTheDocument();
-  expect(
-    screen.getByText(formatPercentage(newPriceChangePct))
-  ).toBeInTheDocument();
-  expect(screen.getByAltText(testData.logo_url)).toBeInTheDocument();
 });
 
 test("should display error screen when an unexpected server error occurs", async () => {
   server.use(
     rest.get(
-      `https://api.nomics.com/v1/currencies/ticker`,
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD`,
       async (_, res, ctx) => {
         return res(
           ctx.status(500),

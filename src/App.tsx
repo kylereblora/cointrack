@@ -2,7 +2,7 @@
 import { css, jsx } from "@emotion/react";
 import * as React from "react";
 import { useFetchCurrencies } from "./hooks/useFetchCurrencies";
-import CryptoTable from "./components/table";
+import CryptoTable from "./components/Table";
 import { PageContainer, PageErrorFallback, PageLoader } from "./components/lib";
 import { useCurrency } from "./hooks/useCurrency";
 import { scrollbarHeight, scrollbarWidth } from "./styles/sizes";
@@ -11,7 +11,7 @@ import Header from "./components/header";
 const App = () => {
   const [fiat] = useCurrency();
   const { data, error } = useFetchCurrencies({
-    convert: fiat,
+    currency: fiat,
   });
 
   return (

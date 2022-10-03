@@ -16,6 +16,11 @@ exports[`renders the header component properly 1`] = `
         >
           CoinTrack
         </h1>
+        <p
+          class="emotion-test-util-key-1ttmkzw-Header"
+        >
+          Powered by CoinGecko
+        </p>
       </div>
       <div
         class="emotion-test-util-key-ep5f3r-Header"

@@ -58,7 +58,6 @@ const config = {
     contentBase: "./dist",
   },
   plugins: [
-    new Dotenv(),
     new CopyPlugin({
       patterns: [{ from: "public", to: "." }],
     }),

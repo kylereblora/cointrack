@@ -15,10 +15,10 @@ const formatPercentage = (value: string | number) => {
   });
 
   if (typeof value === "string") {
-    return `${formatter.format(parseFloat(value) * 100)}%`;
+    return `${formatter.format(parseFloat(value))}%`;
   }
 
-  return `${formatter.format(value * 100)}%`;
+  return `${formatter.format(value)}%`;
 };
 
 const formatCurrency = (value: string | number, currency = "PHP") => {
