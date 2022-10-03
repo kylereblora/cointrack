@@ -53,7 +53,7 @@ function CryptoTable({ data }: any) {
       },
       {
         Header: "Name",
-        accessor: "currency",
+        accessor: "name",
         Cell: (props: any) => {
           return (
             <div
@@ -63,18 +63,17 @@ function CryptoTable({ data }: any) {
                 overflow: "hidden",
               }}
             >
-              <p css={{ fontWeight: 500 }}>{props.value}</p>
               <p
                 css={{
                   width: "80px",
                   whiteSpace: "nowrap",
                   overflow: "hidden",
                   textOverflow: "ellipsis",
-                  fontWeight: "lighter",
+                  fontWeight: 500,
                   color: "var(--color-secondary)",
                 }}
               >
-                {props.row.original.name}
+                {props.value}
               </p>
             </div>
           );
